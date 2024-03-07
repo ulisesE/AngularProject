@@ -1,0 +1,17 @@
+<div
+  *ngIf="numeroProcesado"
+  [ngClass]="{
+    verde: numeroProcesado.esMultiploDeTres,
+    rojo: numeroProcesado.esMultiploDeCinco && !numeroProcesado.esMultiploDeTres,
+    azul: numeroProcesado.esMultiploDeSiete && !numeroProcesado.esMultiploDeTres && !numeroProcesado.esMultiploDeSiete
+  }"
+>
+  <p>
+    Valor: {{ numeroProcesado.valor }}
+    <span *ngIf="numeroProcesado.multiplos.length > 0"> [</span>
+    <span *ngFor="let multiplo of numeroProcesado.multiplos; let last = last"
+      >{{ multiplo }}{{ !last ? ', ' : '' }}</span
+    >
+    <span *ngIf="numeroProcesado.multiplos.length > 0"> ]</span>
+  </p>
+</div>

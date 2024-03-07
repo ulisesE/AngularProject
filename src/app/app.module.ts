@@ -12,8 +12,12 @@ import { RouteReusableStrategy, ApiPrefixInterceptor, ErrorHandlerInterceptor, S
 import { HomeModule } from './home/home.module';
 import { ShellModule } from './shell/shell.module';
 import { AboutModule } from './about/about.module';
+import { MultiplenumerosModule } from './multiplenumeros/multiplenumeros.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 @NgModule({
   imports: [
@@ -28,7 +32,10 @@ import { AppRoutingModule } from './app-routing.module';
     ShellModule,
     HomeModule,
     AboutModule,
+    MultiplenumerosModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule.enablePersistence({ synchronizeTabs: true }),
   ],
   declarations: [AppComponent],
   providers: [
